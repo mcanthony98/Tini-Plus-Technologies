@@ -40,7 +40,7 @@
 
             
 
-            <form action="#" class="p-5 bg-white">
+            <form action="mailing.php" method="POST" class="p-5 bg-white">
               
               <h2 class="h4 text-black mb-5">Contact Form</h2> 
 
@@ -104,7 +104,7 @@
             
             <div id="quote" class="p-4 mb-3 bg-white">
               <h3 class="h5 text-black mb-3">Get a Quote</h3>
-				<form action="#" class="p-5 bg-white">
+				<form action="mailing.php" method="POST" class="p-5 bg-white">
 					<div class="row form-group">
                 
                 <div class="col-md-12">
