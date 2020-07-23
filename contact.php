@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,21 @@
 		include "includes/header.php";
 	?>
   
-
+	<?php 
+		if (isset($_SESSION["error"])){ 
+			echo '<script type="text/javascript">toastr.error("'.$_SESSION["error"].'")</script>';
+			unset($_SESSION["error"]);
+		} if (isset($_SESSION["success"])){ 
+			echo '<script type="text/javascript">toastr.success("'.$_SESSION["success"].'")</script>';
+			unset($_SESSION["success"]);
+		} if (isset($_SESSION["info"])){ 
+			echo '<script type="text/javascript">toastr.info("'.$_SESSION["info"].'")</script>';
+			unset($_SESSION["info"]);
+		} if (isset($_SESSION["warning"])){ 
+			echo '<script type="text/javascript">toastr.warning("'.$_SESSION["warning"].'")</script>';
+			unset($_SESSION["warning"]);
+		}
+	?>
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -47,11 +62,11 @@
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">First Name</label>
-                  <input type="text" id="fname" class="form-control">
+                  <input type="text" id="fname" name="fname" class="form-control">
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="lname">Last Name</label>
-                  <input type="text" id="lname" class="form-control">
+                  <input type="text" id="lname" name="lname" class="form-control">
                 </div>
               </div>
 
@@ -59,7 +74,7 @@
                 
                 <div class="col-md-12">
                   <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control">
+                  <input type="email" id="email" name="email" class="form-control">
                 </div>
               </div>
 			  
@@ -67,7 +82,7 @@
                 
                 <div class="col-md-12">
                   <label class="text-black" for="phone">Phone Number</label> 
-                  <input type="number" id="phone" class="form-control">
+                  <input type="number" id="phone" name="phone" class="form-control">
                 </div>
               </div>
 
@@ -75,13 +90,13 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                  <textarea name="sms" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary btn-md text-white">
+                  <input type="submit" name="contactus" value="Send Message" class="btn btn-primary btn-md text-white">
                 </div>
               </div>
 
@@ -109,7 +124,7 @@
                 
                 <div class="col-md-12">
                   <label class="text-black" for="nm">Name</label> 
-                  <input type="text" id="nm" class="form-control" >
+                  <input type="text" name="name" id="nm" class="form-control" >
                 </div>
               </div>
 			  
@@ -117,11 +132,11 @@
                 
                 <div class="col-md-12">
                   <label class="text-black" for="pn">Phone Number</label> 
-                  <input type="number" id="pn" class="form-control">
+                  <input type="number" id="pn" name="phone" class="form-control">
                 </div>
               </div>
 					
-              <p><a href="#" class="btn btn-primary btn-md text-white">Request</a></p>
+              <p><button type="submit" name="reqcall" class="btn btn-primary btn-md text-white">Request</button></p>
 				</form>
             </div>
 
@@ -133,7 +148,6 @@
     <?php
 		include "includes/footer.php";
 	?>
-  </div>
 
   <?php
 		include "includes/scripts.php";
